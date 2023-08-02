@@ -1,184 +1,143 @@
-# lambda function in python = function written in 1 line using lambda keyword
-#                            accepts any number of arguments, but only has one expression
-#                           (think of it as a shortcut)
-#                            (useful if needed for a short period of time, throw away)
-# lambds parameters : expression
-"""def double(x):
-    return x*2
-print(double(5
+#import time
+#                                  python time module
+# ******************************************************************************
+# print(time.ctime(0)) - converts a time expressed in secondes since epoch to a readable string
+#                        epoch = when your computer thinks the time began (reference point)
+# print(time.time()) return current seconds since epoch
+# print(time.ctime(time.time())) will get current time
+# ******************************************************************************
 
-double = lambda x:x *2
-print(double(5))
-multiply = lambda x,y : x*y
-add = lambda x,y,z : x+y+z
-full_name = lambda first_name, last_name:first_name +" "+ last_name
-age_check = lambda age: True if age>= 18 else False
-print(age_check(18))
+# print(help(time))
+# time.strftime(format,time_object) = formats a time_object to a string
+# time_object = time.localtime() # local time
+#time_object = time.gmtime() # UTC time
+#print(time_object)
+# local_time = time.strftime("%B $d %Y %H:%M:%S", time_object)
+# print(local_time)
+# *******************************************************************************
+# epoch = a date and time from which a computer measures system time
+#print(time.ctime(0))
+#python #time #module
 
-#                                 Python Sort()
-# sort() method = used with lists
-# sort() function = used with iterables
-students = ["Dhruv Rathee", "Bill Gates", "Sundar Pichai", "Satya Nadela", "Dipu Singha"]
-students.sort(reverse=True)
+# ***************************************************************************
+#import time
+# ***************************************************************************
+#print(time.ctime(0))    # convert a time expressed in seconds since epoch to a readable string
+#                                        epoch = when your computer thinks time began (reference point)
+#print(time.time())      # return current seconds since epoch
+#print(time.ctime(time.time())) # will get current time
 
-for i in students:
-    print(i)
+# ***************************************************************************
+# time.strftime(format, time_object) = formats a time_object to a string
+# time_object = time.localtime() # local time
+# time_object = time.gmtime()  # UTC time
+# local_time = time.strftime("%B %d %Y %H:%M:%S", time_object)
+# print(local_time)
 
-students = (("Dhruv Rathee ","F",45),
-            ("Bill Gates   ","A",73), 
-            ("Sundar Pichai","B",49),
-            ("Satya Nadela ","D",54),
-            ("Dipu Singha  ","A",20))
-# grade = lambda grades:grades[1]
-age = lambda ages:ages[2]
-# students.sort(key = grade,reverse = True)
-#students.sort(key = age)
-sorted_students = sorted(students,key = age) # for a list of tuple
-for i in sorted_students:
-    print(i)
+# ***************************************************************************
+# time.strptime(string_string, format) = parses a string representing time/date and returns a struct_time object
+# time_string = "20 April, 2020"
+# time_object = time.strptime(time_string,"%d %B, %Y")
+# print(time_object)
 
-#   map () = map function applies a funcion to each item in an iterable (list,tuple,etc.)
-#   map (function,iterable)
-store = [("shirt", 20.00),
-         ("pants",34.54),
-         ("shocks",53.34),
-         ("jacket",99.43)]
-#to_euros = lambda data:(data[0],data[1]*0.86)
-to_dollars =lambda data:(data[0],data[1]/0.86)
-#store_euros = list(map(to_euros,store))
-store_dollars = list(map(to_dollars,store))
+# ***************************************************************************
+# time.asctime(time_tuple) = accepts a time_object or a tuple up to 9 elements and returns a string
+# (year, month, day, hours, minutes, secs, #day of the week, #day of the year, dst)
+# time_tuple = (2020, 4, 20, 4, 20, 0, 0, 0, 0)
+# time_string = time.asctime(time_tuple)
+# print(time_string)
 
-for i in store_dollars:
-    print(i)
+# ***************************************************************************
+# time.asctime(time_tuple) = accepts a time_object or a tuple up to 9 elements and return seconds since epoch
+# (year, month, day, hours, minutes, secs, #day of the week, #day of the year, dst)
+# time_tuple = (2020, 4, 20, 4, 20, 0, 0, 0, 0)
+# time_string = time.mktime(time_tuple)
+# print(time_string
+#*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*_*-*-*-*-*-*
+# ----------------------------------------------beware-----------------------------------------------------
+# robotic agents and AI agents are surviving by repressing and suppressing
+# the other species on the planet. Robots needs electricity to survive
+# in order to generate electricity environment polution has been must. Environment polution push most other
+# species to extinction.(I have written this lines because while learning to code I suddenly came across this idea)
+#*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*_*-*-*-*-*-*
+             
 
-# filter () = creates a collection of elements from an iterable for which a funcion returns True
-# filter (funcion,iterable)
-friends = [("Pronoy",23),
-           ("Sourov",22,),
-            ("Amit",22),
-            ("Shrabanto",18),
-            ("Shimul",22),
-            ("Dipu",20)]
-age = lambda data:data[1] >= 18
 
-drinking_buddies = list(filter(age, friends))
-for i in drinking_buddies:
-    print(i)
+#              Python Multithreading
+# ******************************************************
+# Python threading tutorial
+# ******************************************************
+# thread =  a flow of execution. Like a separate order of instructions.
+#                  However each thread takes a turn running to achieve concurrency
+#                  GIL = (global interpreter lock),
+#                  allows only one thread to hold the control of the Python interpreter at any one time
 
-# Python reduce funcion -62
-name = input("Enter your name : ")
-age = int(input("Enter your age : "))
+# cpu bound = program/task spends most of it's time waiting for internal events (CPU intensive)
+#             use multiprocessing
 
-age = age +1
+# io bound = program/task spends most of it's time waiting for external events (user input, web scraping)
+#            use multithreading
 
-print("Your BIO is :")
-print(f"Hello {name}")
-print(f"You are {age} years old")
+"""import threading
+import time
 
-# Mad libs game
-adjective1 = input("Enter an adjective : ")
-noun = input("Enter a noun :")
-adjective2 = input("Enter another adjective : ")
-verb = input("Enter a verb :")
-adjective3 = input("Enter an adjective: ")
-print("---------------MAD LIB GAME IS------------")
+def eat_breakfast():
+    time.sleep(3)
+    print("You eat breakfast.")
+def drink_water():
+    time.sleep(4)
+    print("You drank water.")
 
-print(f"Today I went to a  {adjective1} zoo.")
-print(f"In an exhibit I saw {noun}")
-print(f"{noun} was {adjective2} and {verb}ing")
-print(f"I was {adjective3}")
+def study():
+    time.sleep(5)
+    print("You study routinely. ")
 
-# reduce() = apply a funcion to an iterable and reduce it to a single cumulative value
-# performs funcion on first two elements and repeats process until 1 value remains
-# reduce(funcion,iterable)
-import functools
+x = threading.Thread(target = eat_breakfast, args = ())
+x.start()
+y = threading.Thread(target = drink_water, args = ())
+y.start()
+z = threading.Thread(target = study, args = ())
+z.start()
 
-letters = ["H","T","S","A","D","S","S","W","L","E","A","L"]
-word = functools.reduce(lambda x,y:x+y,letters)
-print(word)
+x.join()
+y.join()
+z.join()
 
-import functools
-
-factorial = [5,4,3,2,1]
-result = functools.reduce(lambda x,y:x*y,factorial)
-
-print(result)
-
-# list comprehension = a way to create a new list with less syntax
-#                      can mimic certain lambda funcions, easier to read
-#             list = [expression for item in iterable]
-#  list = [expression for item in iterable if conditional]
-# list = [expression if/else for item in iterable]
-squares = []             # create an empty list
-for i in range(1,11):    # create a for loop
-    squares.append(i*i)  # define what each loop iteration should do
-print(squares)                       # this code takes 3 lines of code
-
-squares = [i*i for i in range(1,11)] # this code takes 1 line of code
-
-print(squares)
-
-students = [100,90,84,76,65,50,45,23,10,0]
-
-#passed_students = list(filter(lambda x:x >=60, students))
-#passed_students = [i for i in students if i >= 60]
-passed_students = [i if i >= 60 else "FAILED" for i in students]
-print(passed_students)
-
-# ----------------Python dictionary comprehension = create dictionaries using expression--------------
-#                           can replace for loops and certain lambda functions
-# dictionary = {key:(expression for key,value) in iterable}
-# dictionary = {key:(expression for key,value) in iterable if conditional}
-# dictionary = {key: (if/else) for (key,value) in iterable
-#---------------------------------------------------------
-cities_in_F = {'New York':32,'Los Angeles':76,'Colorado':111,'Boston':96,'California':67}
-
-cities_in_C = {key : round((value-32)*(5/9)) for (key,value) in cities_in_F.items()}
-print(cities_in_C)
-
-weather = {'New York':"snowing",'Los Angeles':"cloudy",'Colorado':"sunny",'Boston':"sunny",'California':"sunny"}
-sunny_weather = {key:value for (key,value) in weather.items() if value == "sunny"}
-
-print(sunny_weather
-print("--------------This line indicates both end and start of a new topic------------------")
-cities = {'New York':32,'Los Angeles':76,'Colorado':111,'Boston':96,'California':67}
-desc_cities = {key : ("WARM" if value >= 40 else "COLD") for (key,value) in cities.items()}
-print(desc_cities)
-
-print("--------------This line indicates both end and start of a new topic------------------")
-def ckeck_temp(value):
-    if value >= 70:
-        return "HOT"
-    elif 69>= value >= 40:
-        return "WARM"
-    else:
-        return "COLD"
-    
-cities = {'New York':32,'Los Angeles':76,'Colorado':111,'Boston':96,'California':67}
-desc_cities = {key: ckeck_temp(value) for (key,value) in cities.items()}
-print(desc_cities)
-
-# zip function python
-# zip(*iterables) = aggregate elements from two or more iterables(list,tuples,sets,etc)
-#                  creates a zip object with paired elements stored in tuples for each element
-usernames = ["Dude","Bro","Mister"]
-passwords = ("p@ssword","abc123","guest")
-#users = list(zip(usernames,passwords))
-users = dict(zip(usernames,passwords))
-print(type(users))
-#for i in users:
- #   print(i)
-for key,value in users.items():
-    print(key +" : "+value)
-
-usernames = ["Dude","Bro","Mister"]
-passwords = ("p@ssword","abc123","guest")
-login_date = ["1/1/2023","1/2/2023","1/3/2023"]
-users = zip(usernames,passwords,login_date) # zip function is really transformational
-
-for i in users:
-    print(i)
+#eat_breakfast()
+#drink_water()
+#study()
+print(threading.active_count())
+print(threading.enumerate())
+print(time.perf_counter())
 """
+
+# Python       Deamon Threads
+# ************************************************************
+# Python daemon threads
+# ************************************************************
+
+# daemon thread = a thread that runs in the background, not important for program to run
+#                 your program will not wait for daemon threads to complete before exiting
+#                 non-daemon threads cannot normally be killed, stay alive until task is complete
+#
+#                 ex. background tasks, garbage collection, waiting for input, long running processes
+
+import threading
+import time
+
+def timer():
+    print()
+    print()
+    count = 0
+    while True:
+        time.sleep(1)
+        count += 1
+        print("Logged in for :",count , "seconds")
+
+x = threading.Thread(target = timer, daemon = True)
+x.start()
+
+answer = input("Do you wish to exit? : ")
 
 
 
