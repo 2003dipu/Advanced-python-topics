@@ -1,3 +1,20 @@
+# Solution 1
+
+from tkinter import *
+from tkinter import filedialog
+
+def openFile():
+    filepath= filedialog.askopenfilename(title='Open File Okay?',
+                                         filetypes=(('text files','*.txt'),('all files','*.*')))
+    file = open(filepath,'r')
+    print(file.read())
+    file.close()
+window= Tk()
+button= Button(window,text='Open',command=openFile)
+button.pack()
+window.mainloop()
+
+"""# Solution 2 
 from tkinter import *
 from tkinter import filedialog
 
@@ -19,4 +36,4 @@ def openFile():
 window = Tk()
 button = Button(window, text='Open', command=openFile)
 button.pack()
-window.mainloop()
+window.mainloop()"""
