@@ -10,13 +10,13 @@ class TicTacToe:
         self.player = random.choice(self.players)
 
         self.buttons = [[None] * 3 for _ in range(3)]
-        self.label = Label(text=self.player + " turn", font=("consolas", 40))
+        self.label = Label(text=self.player + " turn", font=("consolas", 40), fg='#FF0000')
         self.label.pack(side=TOP)
 
-        self.reset_button = Button(text="Restart", font=("Consolas", 20), command=self.new_game)
+        self.reset_button = Button(text="Restart", font=("Consolas", 20), fg='#00FF00', command=self.new_game)
         self.reset_button.pack(side=TOP)
 
-        self.mode_button = Button(text="Switch Mode", font=("Consolas", 20), command=self.switch_mode)
+        self.mode_button = Button(text="Switch Mode", font=("Consolas", 20), fg='#0000FF', command=self.switch_mode)
         self.mode_button.pack(side=TOP)
 
         self.frame = Frame(self.window)
@@ -26,8 +26,12 @@ class TicTacToe:
             for column in range(3):
                 self.create_button(row, column)
 
-        self.ai_player = "o"  # AI is "o"
-        self.two_player_mode = False  # Default to AI mode
+        self.ai_player = self.player  # AI is "o"
+        self.two_player_mode = True  # Default to AI mode
+
+        self.two_player_mode_label = "Dual mode"
+        self.ai_mode_label = "AI mode"
+        self.label_text = self.two_player_mode_label
 
         self.new_game()
 
@@ -47,16 +51,19 @@ class TicTacToe:
                     self.label.config(text="Tie !")
                 else:
                     self.player = self.players[1] if self.player == self.players[0] else self.players[0]
-                    self.label.config(text=f"{self.player}'s turn")
-            if not self.two_player_mode and self.player == self.ai_player:
-                self.ai_turn()
+                    self.label.config(text=self.label_text)
+
+                if not self.two_player_mode and self.player == self.ai_player:
+                    self.ai_turn()
 
     def ai_turn(self):
         if self.player == self.ai_player and not self.check_winner():
-            empty_cells = [(row, column) for row in range(3) for column in range(3) if self.buttons[row][column]['text'] == ""]
-            if empty_cells:
-                row, column = random.choice(empty_cells)
-                self.next_turn(row, column)
+            empty_cells = [(row, column) for row in range(3) for column in range(3) if
+                           self.buttons[row][column]['text'] == ""]
+        if empty_cells:
+            row, column = random.choice(empty_cells)
+            self.next_turn(row,column)
+
     def check_winner(self):
         for row in range(3):
             if self.buttons[row][0]['text'] == self.buttons[row][1]['text'] == self.buttons[row][2]['text'] != "":
@@ -70,15 +77,13 @@ class TicTacToe:
             return True
         return False
 
-
-
-
     def count_empty_spaces(self):
         empty_count = sum(1 for row in self.buttons for button in row if button['text'] == "")
         return empty_count
 
     def new_game(self):
         self.player = random.choice(self.players)
+        self.label_text = self.two_player_mode_label if self.two_player_mode else self.ai_mode_label
         self.label.config(text=f"{self.player}'s turn")
         for row in range(3):
             for column in range(3):
@@ -88,10 +93,13 @@ class TicTacToe:
     def switch_mode(self):
         self.two_player_mode = not self.two_player_mode
         if self.two_player_mode:
-            self.label.config(text="Two-player mode")
+            self.label_text = self.two_player_mode_label
         else:
-            self.label.config(text=f"{self.player}'s turn")
-            self.ai_turn()
+            self.label_text = self.ai_mode_label
+            if self.player == self.ai_player:
+                self.ai_turn()
+
+        self.label.config(text=self.label_text)
 
     def run(self):
         self.window.mainloop()
